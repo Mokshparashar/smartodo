@@ -1,17 +1,26 @@
 import Image from "next/image";
 import React from "react";
 import img from "../../public/sectionImg.png";
+import { FaQuoteLeft } from "react-icons/fa";
 function Section() {
   return (
     <section className="w-full mt-20 md:mt-0 flex items-center justify-between px-32 ">
       <div className="w-1/2">
-        <h1 className="text-white font-light text-4xl uppercase mb-4 tracking-widest">
-          Manage your day with
+        <FaQuoteLeft className="text-6xl mb-8" />
+        <h1 className="text-black  text-5xl uppercase mb-6 tracking-widest font-bold">
+          Manage your
         </h1>
-        <span className="text-green-500 font-extrabold mt-4 text-6xl uppercase tracking-widest">
-          Smartodo.
+        <span className="font-extrabold text-blue-600 text-8xl uppercase">
+          day
         </span>
-        <p>
+        <span className="text-black  text-5xl uppercase tracking-widest font-bold ml-6">
+          with
+        </span>
+
+        <div className="text-green-600 font-extrabold text-7xl uppercase tracking-widest mt-8">
+          Smartodo.
+        </div>
+        <p className="uppercase  font-semibold">
           your daily task manager | Let him assist you in your daily working.
         </p>
       </div>
