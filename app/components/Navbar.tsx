@@ -31,8 +31,11 @@ function Navbar() {
       <div className="flex items-center justify-around">
         {currentUser ? (
           <Image
-            src={currentUser.user.photoURL}
-            alt={currentUser.user.displayName}
+            src={
+              currentUser.user.photoURL ??
+              "https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg"
+            }
+            alt={currentUser.user.displayName ?? "user"}
             width={50}
             height={50}
             className="rounded-full"
