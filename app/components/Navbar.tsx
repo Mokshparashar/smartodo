@@ -23,19 +23,34 @@ function Navbar() {
 
     return user;
   }
-  console.log(currentUser);
 
+  function getToken() {
+    currentUser?.user
+      .getIdToken(true)
+      .then((token) => {
+        // setUserToken(token.toString());
+        window.localStorage.setItem("token2", token);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  useEffect(() => {
+    getToken();
+  });
+
+  const myToken = window.localStorage.getItem("token2");
   return (
     <nav className="flex items-center justify-between px-8 py-4">
       <Image src={logo} alt="Smartodo" width={250} height={250} />
       <div className="flex items-center justify-around">
-        {currentUser ? (
+        {myToken ? (
           <Image
             src={
-              currentUser.user.photoURL ??
+              currentUser?.user.photoURL ??
               "https://www.shutterstock.com/image-vector/user-profile-icon-vector-avatar-600nw-2247726673.jpg"
             }
-            alt={currentUser.user.displayName ?? "user"}
+            alt={currentUser?.user.displayName ?? "user"}
             width={50}
             height={50}
             className="rounded-full"
