@@ -28,7 +28,7 @@ function Navbar() {
       .getIdToken(true)
       .then((token) => {
         // setUserToken(token.toString());
-        window.localStorage.setItem("token2", token);
+        localStorage.setItem("token2", token);
       })
       .catch((err) => {
         console.log(err);
