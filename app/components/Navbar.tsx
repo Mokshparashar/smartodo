@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "../../public/logo-transparent-svg.svg";
 import {
@@ -8,8 +8,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "@/firebase/firebaseConfig";
-import { getAuth } from "firebase/auth";
-import { useEffect } from "react";
+
 function Navbar() {
   const [currentUser, setCurrentUser] = useState<UserCredential>();
   const [userToken, setUserToken] = useState<any>();
@@ -35,16 +34,18 @@ function Navbar() {
         console.log(err);
       });
   }
+
   useEffect(() => {
     getToken();
-  });
+  }, []); // Make sure to pass an empty dependency array to useEffect
 
   const myToken = window.localStorage.getItem("token2");
   return (
-    <nav className="flex items-center justify-between px-8 py-4">
+    <nav className="flex flex-col md:flex-row items-center justify-between px-8 py-4">
       <Image src={logo} alt="Smartodo" width={250} height={250} />
-      <div className="flex items-center justify-around">
-        {myToken ? (
+
+      <div className="flex items-center mt-4 md:mt-0">
+        {currentUser ? (
           <Image
             src={
               currentUser?.user.photoURL ??
